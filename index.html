@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <script>
+        const url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-035?Authorization=CWB-B84D19DA-BB8E-4A6D-9CBF-FD09B32D6BAD&limit=4&format=JSON&locationName=%E9%95%B7%E6%B2%BB%E9%84%89';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                var WhT = data.records.locations[0].location[0].weatherElement
+                console.log(data)
+                document.getElementById('locationName').innerHTML = data.records.locations[0].location[0].locationName
+                document.getElementById('startTime').innerHTML = WhT[10].time[0].startTime
+                document.getElementById('endTime').innerHTML = WhT[10].time[0].endTime
+
+                //document.getElementById('WeatherDescription').innerHTML = WhT[10].time[0].elementValue[0].value.substr(0,4)+"<p>"+WhT[10].time[0].elementValue[0].value.substr(5,7)+"</p>"
+                document.getElementById('WeatherDescription').innerHTML = WhT[10].time[0].elementValue[0].value
+                document.getElementById('ToUVI').innerHTML = "紫外線指數:" + WhT[9].time[0].elementValue[0].value
+                document.getElementById('ToMaxT').innerHTML = "最高溫度:" + WhT[5].time[0].elementValue[0].value
+                document.getElementById('ToMinT').innerHTML = "最低溫度:" + WhT[8].time[0].elementValue[0].value
+                document.getElementById('ToRH').innerHTML = "濕度:" + WhT[2].time[0].elementValue[0].value + "%"
+                document.getElementById('ToPoP12h').innerHTML = "降雨機率:" + WhT[0].time[0].elementValue[0].value + "%"
+                document.getElementById('ToWS').innerHTML = "最大風速:" + WhT[4].time[0].elementValue[0].value + "m/s"
+                document.getElementById('ToWD').innerHTML = "風向:" + WhT[13].time[0].elementValue[0].value
+
+                document.getElementById('One').innerHTML = WhT[10].time[0].startTime.substr(5,5)
+                document.getElementById('OneUVI').innerHTML = "紫外線指數:" + WhT[9].time[0].elementValue[0].value
+                document.getElementById('OneRH').innerHTML = "濕度:" + WhT[2].time[0].elementValue[0].value + "%"
+                document.getElementById('OnePoP12h').innerHTML = "降雨機率:" + WhT[0].time[0].elementValue[0].value + "%"
+                document.getElementById('OneWS').innerHTML = "最大風速:" + WhT[4].time[0].elementValue[0].value + "m/s"
+
+                document.getElementById('Two').innerHTML = WhT[10].time[2].startTime.substr(5,5)
+                document.getElementById('TwoUVI').innerHTML = "紫外線指數:" + WhT[9].time[1].elementValue[0].value
+                document.getElementById('TwoRH').innerHTML = "濕度:" + WhT[2].time[2].elementValue[0].value + "%"
+                document.getElementById('TwoPoP12h').innerHTML = "降雨機率:" + WhT[0].time[2].elementValue[0].value + "%"
+                document.getElementById('TwoWS').innerHTML = "最大風速:" + WhT[4].time[2].elementValue[0].value + "m/s"
+                
+                document.getElementById('Three').innerHTML = WhT[10].time[4].startTime.substr(5,5)
+                document.getElementById('ThreeUVI').innerHTML = "紫外線指數:" + WhT[9].time[2].elementValue[0].value
+                document.getElementById('ThreeRH').innerHTML = "濕度:" + WhT[2].time[4].elementValue[0].value + "%"
+                document.getElementById('ThreePoP12h').innerHTML = "降雨機率:" + WhT[0].time[4].elementValue[0].value + "%"
+                document.getElementById('ThreeWS').innerHTML = "最大風速:" + WhT[4].time[4].elementValue[0].value + "m/s"
+
+                document.getElementById('Four').innerHTML = WhT[10].time[6].startTime.substr(5,5)
+                document.getElementById('FourUVI').innerHTML = "紫外線指數:" + WhT[9].time[3].elementValue[0].value
+                document.getElementById('FourRH').innerHTML = "濕度:" + WhT[2].time[2].elementValue[0].value + "%"
+                document.getElementById('FourPoP12h').innerHTML = "降雨機率:" + WhT[0].time[6].elementValue[0].value + "%"
+                document.getElementById('FourWS').innerHTML = "最大風速:" + WhT[4].time[6].elementValue[0].value + "m/s"
+
+                document.getElementById('Five').innerHTML = WhT[10].time[8].startTime.substr(5,5)
+                document.getElementById('FiveUVI').innerHTML = "紫外線指數:" + WhT[9].time[4].elementValue[0].value
+                document.getElementById('FiveRH').innerHTML = "濕度:" + WhT[2].time[8].elementValue[0].value + "%"
+                document.getElementById('FivePoP12h').innerHTML = "降雨機率:" + WhT[0].time[8].elementValue[0].value + "%"
+                document.getElementById('FiveWS').innerHTML = "最大風速:" + WhT[4].time[8].elementValue[0].value + "m/s"
+
+                document.getElementById('Six').innerHTML = WhT[10].time[10].startTime.substr(5,5)
+                document.getElementById('SixUVI').innerHTML = "紫外線指數:" + WhT[9].time[5].elementValue[0].value
+                document.getElementById('SixRH').innerHTML = "濕度:" + WhT[2].time[10].elementValue[0].value + "%"
+                document.getElementById('SixPoP12h').innerHTML = "降雨機率:" + WhT[0].time[10].elementValue[0].value + "%"
+                document.getElementById('SixWS').innerHTML = "最大風速:" + WhT[4].time[10].elementValue[0].value + "m/s"
+
+                document.getElementById('Seven').innerHTML = WhT[10].time[12].startTime.substr(5,5)
+                document.getElementById('SevenUVI').innerHTML = "紫外線指數:" + WhT[9].time[6].elementValue[0].value
+                document.getElementById('SevenRH').innerHTML = "濕度:" + WhT[2].time[12].elementValue[0].value + "%"
+                document.getElementById('SevenPoP12h').innerHTML = "降雨機率:" + WhT[0].time[12].elementValue[0].value + "%"
+                document.getElementById('SevenWS').innerHTML = "最大風速:" + WhT[4].time[12].elementValue[0].value + "m/s"
+
+
+
+            })
+
+
+    </script>
+
+    <div class="Main">
+        <div class="DemandInfo">
+            <h1 class="County" id="locationName">
+                屏東縣
+            </h1>
+            <h1 class="Date" id="startTime">
+                日期:4/1(星期日)
+            </h1>
+            <h1 class="Time" id="endTime">
+                時間:7點
+            </h1>
+        </div>
+        <div class="TodayInfo">
+            <div class="WheatherImg">
+                <img class="WheatherImg" src="img/sun.png" alt="">
+            </div>
+            <div class="Suggestion" id="WeatherDescription">
+                外出建議:外出建議:外出建議:外出建議:外出建議:
+                外出建議:外出建議:外出建議:外出建議:外出建議:
+                外出建議:外出建議:外出建議:外出建議:外出建議:
+                外出建議:外出建議:外出建議:外出建議:外出建議:
+                WeatherDescription
+            </div>
+            <div class="WeatherInfo1">
+                <li>空氣品質</li>
+                <li id="ToUVI">紫外線指數 UVI</li>
+                <li id="ToMaxT">最高溫度 MaxT</li>
+                <li id="ToMinT">最低溫度 MinT</li>
+            </div>
+            <div class="WeatherInfo2">
+                <li id="ToRH">濕度 RH</li>
+                <li id="ToPoP12h">降雨機率 PoP12h</li>
+                <li id="ToWS">最大風速 WS</li>
+                <li id="ToWD">風向 WD</li>
+            </div>
+
+        </div>
+        <div class="WeekInfo">
+            <div class="Mon">
+                <h2 id="One">星期一</h2>
+
+                <div class="Smallsun">
+                    <img class="Smallsun" src="img/sun.png" alt="">
+                </div>
+                <li id="OneRH">濕度 RH</li>
+                <li id="OnePoP12h">降雨機率 PoP12h</li>
+                <li id="OneWS">最大風速 WS</li>
+                <li id="OneUVI">紫外線指數 UVI</li>
+            </div>
+            <div class="Tou">
+                <h2 id="Two">星期二</h2>
+
+                <div class="Smallsun">
+                    <img class="Smallsun" src="img/sun.png" alt="">
+                </div>
+                <li id="TwoRH">濕度 RH</li>
+                <li id="TwoPoP12h">降雨機率 PoP12h</li>
+                <li id="TwoWS">最大風速 WS</li>
+                <li id="TwoUVI">紫外線指數 UVI</li>
+            </div>
+            <div class="Wen">
+                <h2 id="Three">星期二</h2>
+
+                <div class="Smallsun">
+                    <img class="Smallsun" src="img/sun.png" alt="">
+                </div>
+                <li id="ThreeRH">濕度 RH</li>
+                <li id="ThreePoP12h">降雨機率 PoP12h</li>
+                <li id="ThreeWS">最大風速 WS</li>
+                <li id="ThreeUVI">紫外線指數 UVI</li>
+            </div>
+            <div class="Thu">
+                <h2 id="Four">星期二</h2>
+
+                <div class="Smallsun">
+                    <img class="Smallsun" src="img/sun.png" alt="">
+                </div>
+                <li id="FourRH">濕度 RH</li>
+                <li id="FourPoP12h">降雨機率 PoP12h</li>
+                <li id="FourWS">最大風速 WS</li>
+                <li id="FourUVI">紫外線指數 UVI</li>
+            </div>
+            <div class="Fri">
+                <h2 id="Five">星期二</h2>
+
+                <div class="Smallsun">
+                    <img class="Smallsun" src="img/sun.png" alt="">
+                </div>
+                <li id="FiveRH">濕度 RH</li>
+                <li id="FivePoP12h">降雨機率 PoP12h</li>
+                <li id="FiveWS">最大風速 WS</li>
+                <li id="FiveUVI">紫外線指數 UVI</li>
+            </div>
+            <div class="Sat">
+                <h2 id="Six">星期二</h2>
+
+                <div class="Smallsun">
+                    <img class="Smallsun" src="img/sun.png" alt="">
+                </div>
+                <li id="SixRH">濕度 RH</li>
+                <li id="SixPoP12h">降雨機率 PoP12h</li>
+                <li id="SixWS">最大風速 WS</li>
+                <li id="SixUVI">紫外線指數 UVI</li>
+            </div>
+            <div class="Sun">
+                <h2 id="Seven">星期二</h2>
+
+                <div class="Smallsun">
+                    <img class="Smallsun" src="img/sun.png" alt="">
+                </div>
+                <li id="SevenRH">濕度 RH</li>
+                <li id="SevenPoP12h">降雨機率 PoP12h</li>
+                <li id="SevenWS">最大風速 WS</li>
+                <li id="SevenUVI">紫外線指數 UVI</li>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
